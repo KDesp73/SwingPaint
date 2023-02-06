@@ -45,10 +45,6 @@ public class YamlFile {
                 return directory;
         }
 
-        public void setDirectory(String directory) {
-                this.directory = directory;
-        }
-
         public Map<String, Object> getContents() {
                 return contents;
         }
