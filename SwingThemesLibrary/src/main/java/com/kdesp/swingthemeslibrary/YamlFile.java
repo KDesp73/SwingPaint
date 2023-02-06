@@ -28,7 +28,7 @@ public class YamlFile {
                 try {
                         inputStream = new FileInputStream(new File(fileDirectory));
                 } catch (FileNotFoundException ex) {
-                        Logger.getLogger(SwingThemesLibrary.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(YamlFile.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 Yaml yaml = new Yaml();
