@@ -111,7 +111,7 @@ public class ThemeCollection {
                 themes.add(theme);
         }
 
-        public final void loadThemes(File folder_dir) {
+        public void loadThemes(File folder_dir) {
                 themes.clear();
                 ArrayList<String> yamlFiles = Utils.listFiles(folder_dir);
 
@@ -122,10 +122,10 @@ public class ThemeCollection {
                 }
         }
 
-        public final void loadThemes(String[] jsons) {
+        public void loadThemes(String[] jsons) {
                 themes.clear();
                 for (String json : jsons) {
-                        Theme newTheme = new Theme(json);
+                        Theme newTheme = new Theme(new JsonString(json));
                         themes.add(newTheme);
                 }
         }

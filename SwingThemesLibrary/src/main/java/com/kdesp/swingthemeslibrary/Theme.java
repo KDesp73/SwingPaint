@@ -45,8 +45,8 @@ public class Theme {
         private Color extra_9;
         private Color[] extras;
 
-        public Theme(String json) {
-                this.json = json;
+        public Theme(JsonString json) {
+                this.json = json.getJson();
 
                 //Parse json into theme
                 parseJson(json);
@@ -97,72 +97,6 @@ public class Theme {
                 this.yaml = yaml;
         }
 
-        public void parseYaml(String dir) throws KeyNotFoundException, IOException {
-                YamlFile newYaml = new YamlFile(dir);
-
-                name = (String) newYaml.getValue("name");
-                bg = Utils.hexToColor(newYaml.getValue("bg").toString());
-                bg_2 = Utils.hexToColor(newYaml.getValue("bg_2").toString());
-                fg = Utils.hexToColor(newYaml.getValue("fg").toString());
-                fg_2 = Utils.hexToColor(newYaml.getValue("fg_2").toString());
-                btn = Utils.hexToColor(newYaml.getValue("btn").toString());
-                btn_fg = Utils.hexToColor(newYaml.getValue("btn_fg").toString());
-                textbox = Utils.hexToColor(newYaml.getValue("textbox").toString());
-                textbox_fg = Utils.hexToColor(newYaml.getValue("textbox_fg").toString());
-                list = Utils.hexToColor(newYaml.getValue("list").toString());
-                list_fg = Utils.hexToColor(newYaml.getValue("list_fg").toString());
-                list_focus = Utils.hexToColor(newYaml.getValue("list_focus").toString());
-                scrollbar = Utils.hexToColor(newYaml.getValue("scrollbar").toString());
-                progress_bar = Utils.hexToColor(newYaml.getValue("progress_bar").toString());
-                extra_0 = Utils.hexToColor(newYaml.getValue("extra_0").toString());
-                extra_1 = Utils.hexToColor(newYaml.getValue("extra_1").toString());
-                extra_2 = Utils.hexToColor(newYaml.getValue("extra_2").toString());
-                extra_3 = Utils.hexToColor(newYaml.getValue("extra_3").toString());
-                extra_4 = Utils.hexToColor(newYaml.getValue("extra_4").toString());
-                extra_5 = Utils.hexToColor(newYaml.getValue("extra_5").toString());
-                extra_6 = Utils.hexToColor(newYaml.getValue("extra_6").toString());
-                extra_7 = Utils.hexToColor(newYaml.getValue("extra_7").toString());
-                extra_8 = Utils.hexToColor(newYaml.getValue("extra_8").toString());
-                extra_9 = Utils.hexToColor(newYaml.getValue("extra_9").toString());
-
-                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
-
-                this.yaml = newYaml;
-        }
-
-        public void parseJson(String json) {
-                json = json.replaceAll(",", ", ");
-
-                name = Utils.getJsonValue(json, "name");
-                bg = Utils.hexToColor(Utils.getJsonValue(json, "bg").replaceAll("\"", ""));
-                fg = Utils.hexToColor(Utils.getJsonValue(json, "fg").replaceAll("\"", ""));
-                bg_2 = Utils.hexToColor(Utils.getJsonValue(json, "bg_2").replaceAll("\"", ""));
-                fg_2 = Utils.hexToColor(Utils.getJsonValue(json, "fg_2").replaceAll("\"", ""));
-                btn = Utils.hexToColor(Utils.getJsonValue(json, "btn").replaceAll("\"", ""));
-                btn_fg = Utils.hexToColor(Utils.getJsonValue(json, "btn_fg").replaceAll("\"", ""));
-                textbox = Utils.hexToColor(Utils.getJsonValue(json, "textbox").replaceAll("\"", ""));
-                textbox_fg = Utils.hexToColor(Utils.getJsonValue(json, "textbox_fg").replaceAll("\"", ""));
-                list = Utils.hexToColor(Utils.getJsonValue(json, "list").replaceAll("\"", ""));
-                list_fg = Utils.hexToColor(Utils.getJsonValue(json, "list_fg").replaceAll("\"", ""));
-                list_focus = Utils.hexToColor(Utils.getJsonValue(json, "list_focus").replaceAll("\"", ""));
-                scrollbar = Utils.hexToColor(Utils.getJsonValue(json, "scrollbar").replaceAll("\"", ""));
-                progress_bar = Utils.hexToColor(Utils.getJsonValue(json, "progress_bar").replaceAll("\"", ""));
-                extra_0 = Utils.hexToColor(Utils.getJsonValue(json, "extra_0").replaceAll("\"", ""));
-                extra_1 = Utils.hexToColor(Utils.getJsonValue(json, "extra_1").replaceAll("\"", ""));
-                extra_2 = Utils.hexToColor(Utils.getJsonValue(json, "extra_2").replaceAll("\"", ""));
-                extra_3 = Utils.hexToColor(Utils.getJsonValue(json, "extra_3").replaceAll("\"", ""));
-                extra_4 = Utils.hexToColor(Utils.getJsonValue(json, "extra_4").replaceAll("\"", ""));
-                extra_5 = Utils.hexToColor(Utils.getJsonValue(json, "extra_5").replaceAll("\"", ""));
-                extra_6 = Utils.hexToColor(Utils.getJsonValue(json, "extra_6").replaceAll("\"", ""));
-                extra_7 = Utils.hexToColor(Utils.getJsonValue(json, "extra_7").replaceAll("\"", ""));
-                extra_8 = Utils.hexToColor(Utils.getJsonValue(json, "extra_8").replaceAll("\"", ""));
-                extra_9 = Utils.hexToColor(Utils.getJsonValue(json, "extra_9").replaceAll("\"", ""));
-
-                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
-
-                this.json = json;
-        }
-
         public void parseJson(JsonString jsonString) {
                 String newJson = jsonString.getJson().replaceAll(",", ", ");
 
@@ -196,8 +130,8 @@ public class Theme {
                 this.json = newJson;
         }
 
-        public YamlFile generateYaml(String dir) throws FileNotFoundException {
-                try ( PrintWriter writer = new PrintWriter(new File(dir))) {
+        public YamlFile generateYaml(String target_dir) throws FileNotFoundException {
+                try ( PrintWriter writer = new PrintWriter(new File(target_dir))) {
                         writer.write("name: " + name);
                         writer.write("\n");
                         writer.write("bg: \"" + Utils.ColorToHex(bg) + "\"");
@@ -248,10 +182,10 @@ public class Theme {
                         writer.write("\n");
                 }
 
-                return new YamlFile(dir);
+                return new YamlFile(target_dir);
         }
 
-        public String generateJson() {
+        public JsonString generateJson() {
                 JSONObject jsonObject = new JSONObject();
 
                 jsonObject.put("name", name);
@@ -278,7 +212,7 @@ public class Theme {
                 jsonObject.put("extra_8", Utils.ColorToHex(extra_8));
                 jsonObject.put("extra_9", Utils.ColorToHex(extra_9));
 
-                return jsonObject.toString();
+                return new JsonString(jsonObject.toString());
         }
 
         private class Utils {
