@@ -9,11 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
-import org.yaml.snakeyaml.Yaml;
 
 /**
  *
@@ -35,6 +33,7 @@ public class Theme {
         private Color textbox_fg;
         private Color list;
         private Color list_fg;
+        private Color list_focus;
         private Color scrollbar;
         private Color progress_bar;
         private Color extra_0;
@@ -49,8 +48,7 @@ public class Theme {
         private Color extra_9;
         private Color[] extras;
 
-        public Theme(String name, String json) {
-                this.name = name;
+        public Theme(String json) {
                 this.json = json;
 
                 //Parse json into theme
@@ -68,10 +66,6 @@ public class Theme {
                 }
         }
 
-        public Theme(String name) {
-                this.name = name;
-        }
-
         public Theme() {
         }
 
@@ -87,6 +81,7 @@ public class Theme {
                 textbox_fg = Utils.hexToColor(yaml.getValue("textbox_fg").toString());
                 list = Utils.hexToColor(yaml.getValue("list").toString());
                 list_fg = Utils.hexToColor(yaml.getValue("list_fg").toString());
+                list_focus = Utils.hexToColor(yaml.getValue("list_focus").toString());
                 scrollbar = Utils.hexToColor(yaml.getValue("scrollbar").toString());
                 progress_bar = Utils.hexToColor(yaml.getValue("progress_bar").toString());
                 extra_0 = Utils.hexToColor(yaml.getValue("extra_0").toString());
@@ -119,6 +114,7 @@ public class Theme {
                 textbox_fg = Utils.hexToColor(newYaml.getValue("textbox_fg").toString());
                 list = Utils.hexToColor(newYaml.getValue("list").toString());
                 list_fg = Utils.hexToColor(newYaml.getValue("list_fg").toString());
+                list_focus = Utils.hexToColor(newYaml.getValue("list_focus").toString());
                 scrollbar = Utils.hexToColor(newYaml.getValue("scrollbar").toString());
                 progress_bar = Utils.hexToColor(newYaml.getValue("progress_bar").toString());
                 extra_0 = Utils.hexToColor(newYaml.getValue("extra_0").toString());
@@ -151,6 +147,7 @@ public class Theme {
                 textbox_fg = Utils.hexToColor(Utils.getJsonValue(json, "textbox_fg").replaceAll("\"", ""));
                 list = Utils.hexToColor(Utils.getJsonValue(json, "list").replaceAll("\"", ""));
                 list_fg = Utils.hexToColor(Utils.getJsonValue(json, "list_fg").replaceAll("\"", ""));
+                list_focus = Utils.hexToColor(Utils.getJsonValue(json, "list_focus").replaceAll("\"", ""));
                 scrollbar = Utils.hexToColor(Utils.getJsonValue(json, "scrollbar").replaceAll("\"", ""));
                 progress_bar = Utils.hexToColor(Utils.getJsonValue(json, "progress_bar").replaceAll("\"", ""));
                 extra_0 = Utils.hexToColor(Utils.getJsonValue(json, "extra_0").replaceAll("\"", ""));
@@ -183,6 +180,7 @@ public class Theme {
                 textbox_fg = Utils.hexToColor(Utils.getJsonValue(newJson, "textbox_fg").replaceAll("\"", ""));
                 list = Utils.hexToColor(Utils.getJsonValue(newJson, "list").replaceAll("\"", ""));
                 list_fg = Utils.hexToColor(Utils.getJsonValue(newJson, "list_fg").replaceAll("\"", ""));
+                list_focus = Utils.hexToColor(Utils.getJsonValue(newJson, "list_focus").replaceAll("\"", ""));
                 scrollbar = Utils.hexToColor(Utils.getJsonValue(newJson, "scrollbar").replaceAll("\"", ""));
                 progress_bar = Utils.hexToColor(Utils.getJsonValue(newJson, "progress_bar").replaceAll("\"", ""));
                 extra_0 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_0").replaceAll("\"", ""));
@@ -224,6 +222,8 @@ public class Theme {
                         writer.write("list: \"" + Utils.ColorToHex(list) + "\"");
                         writer.write("\n");
                         writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
+                        writer.write("\n");
+                        writer.write("list_focus: \"" + Utils.ColorToHex(list_focus) + "\"");
                         writer.write("\n");
                         writer.write("scrollbar: \"" + Utils.ColorToHex(scrollbar) + "\"");
                         writer.write("\n");
@@ -420,6 +420,14 @@ public class Theme {
                 this.list_fg = list_fg;
         }
 
+        public Color getList_focus() {
+                return list_focus;
+        }
+
+        public void setList_focus(Color list_focus) {
+                this.list_focus = list_focus;
+        }
+        
         public Color getScrollbar() {
                 return scrollbar;
         }

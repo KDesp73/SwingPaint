@@ -14,10 +14,9 @@ textbox_fg: "000000"
 
 list: "000000"
 list_fg: "000000"
+list_focus: "000000"
 
 scrollbar: "000000"
-list_fg: "000000"
-
 progress_bar: "000000"
 
 # extra slots for additional colors
