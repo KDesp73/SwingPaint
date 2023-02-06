@@ -76,9 +76,9 @@
 
 ```xml
 <dependency>
-    <groupId>MADB</groupId>
-    <artifactId>accessDB</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <groupId>kdesp73.lib</groupId>
+    <artifactId>SwingThemesLibrary</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -86,7 +86,7 @@
 ## Clone
 
 ```bash
-git clone https://github.com/KDesp73/MADB
+git clone https://github.com/KDesp73/Swing-Themes-Library
 ```
 
 ## TODO
