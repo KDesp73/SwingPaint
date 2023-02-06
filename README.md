@@ -65,12 +65,12 @@
   themes.load(new String[]{[strings with theme information]});
   ```
   
-  * Implement Theme on a container
-    ```java
-    JFrame frame = new JFrame();
-    Theme theme = new Theme(); //non empty theme
-    ThemeCollection.implementTheme(frame, theme);
-    ```
+* Implement Theme on a container
+  ```java
+  JFrame frame = new JFrame();
+  Theme theme = new Theme(); //non empty theme
+  ThemeCollection.implementTheme(frame, theme);
+  ```
 
 ## Dependencies
 
