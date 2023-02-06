@@ -1,4 +1,4 @@
-# Swing-Themes-Library
+# Swing Themes Library
 
 ## Tutorial
 
@@ -98,7 +98,7 @@ Contributions are always welcome!
 
 See [Contributing.md](https://github.com/KDesp73/Swing-Themes-Library/blob/main/Contributing.md) for ways to get started.
 
-Please adhere to this project's [Code of Conduct](https://github.com/KDesp73/MADB/blob/main/CODE_OF_CONDUCT.md).
+Please adhere to this project's [Code of Conduct](https://github.com/KDesp73/Swing-Themes-Library/blob/main/CODE_OF_CONDUCT.md).
 
 ## Authors
 
