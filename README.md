@@ -72,6 +72,8 @@
   ThemeCollection.implementTheme(frame, theme);
   ```
 
+`Set your JComponent's name according to the [sample_theme.yml](https://github.com/KDesp73/Swing-Themes-Library/blob/main/Samples/sample_theme.yml). This will determine the color of each component.`
+
 ## Dependencies
 
 ```xml
