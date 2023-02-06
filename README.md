@@ -13,30 +13,30 @@
 
   //or
 
-  Theme theme_json = new Theme(new JsonString([Your json string]);
+  Theme theme_json = new Theme(new JsonString(your_json_string);
 
   //or
 
-  Theme theme_yaml = new Theme(new YamlFile([Full file directory]);
+  Theme theme_yaml = new Theme(new YamlFile(full_file_directory]);
   ```
 
 * Parse Yaml file
   ```java
   Theme theme = new Theme();
   
-  theme.parseYaml(new YamlFile([Full file directory]);
+  theme.parseYaml(new YamlFile(full_file_directory);
   ```
 
 * Parse Json
   ```java
   Theme theme = new Theme();
   
-  theme.parseJson(new JsonString([Your json string]);
+  theme.parseJson(new JsonString(your_json_string);
   ```
   
 * Generate Yaml from Theme
   ```java
-  YamlFile yaml = existing_theme.generateYaml([target directory]); //Creates .yml file in [targer directory]
+  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [targer directory]
   ```
   
 * Generate Json from Theme
@@ -58,7 +58,7 @@
   
 * Load themes
   ```java
-  themes.load(new File([folder path*])); //* Folder containing .yml files with wanted themes
+  themes.load(new File(folder_path)); // Folder containing .yml files with wanted themes
   
   //or
   
