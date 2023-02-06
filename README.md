@@ -78,7 +78,7 @@
 
 ```xml
 <dependency>
-    <groupId>kdesp73.lib</groupId>
+    <groupId>kdesp73.themeLib</groupId>
     <artifactId>SwingThemesLibrary</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
