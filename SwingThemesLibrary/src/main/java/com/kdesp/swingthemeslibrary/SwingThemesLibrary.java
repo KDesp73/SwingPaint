@@ -5,18 +5,13 @@ import java.io.IOException;
 public class SwingThemesLibrary {
 
         public static void main(String[] args) throws IOException {
-                String dir = new java.io.File(".").getCanonicalPath() + "\\src\\main\\java\\com\\kdesp\\swingthemeslibrary\\" + "theme.yml";
+                String dir = new java.io.File(".").getCanonicalPath() + "\\src\\main\\java\\com\\kdesp\\swingthemeslibrary\\" + "sample_theme.yml";
                 YamlFile yf = new YamlFile(dir);
                 
                 Theme t = new Theme("Default", yf);
                 
-                System.out.println(t);
+                t.generateYaml("Test", new java.io.File(".").getCanonicalPath() + "\\src\\main\\java\\com\\kdesp\\swingthemeslibrary\\" + "new.yml");
                 
-                t.generateJson();
-                System.out.println(t.getJson());
-                
-                Theme t1 = new Theme("New Theme", t.getJson());
-                System.out.println(t1);
         }
         
         

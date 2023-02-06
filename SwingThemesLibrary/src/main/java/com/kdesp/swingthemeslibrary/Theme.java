@@ -5,10 +5,15 @@
 package com.kdesp.swingthemeslibrary;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
+import org.yaml.snakeyaml.Yaml;
 
 /**
  *
@@ -72,6 +77,7 @@ public class Theme {
         }
 
         private void parseYaml(YamlFile yaml) throws KeyNotFoundException, IOException {
+                name = (String) yaml.getValue("name");
                 bg = Utils.hexToColor(yaml.getValue("bg").toString());
                 bg_2 = Utils.hexToColor(yaml.getValue("bg_2").toString());
                 fg = Utils.hexToColor(yaml.getValue("fg").toString());
@@ -129,6 +135,71 @@ public class Theme {
                 this.json = json;
         }
 
+        public YamlFile generateYaml(String name, String dir) throws FileNotFoundException {
+                PrintWriter writer = new PrintWriter(new File(dir));
+                
+                writer.write("name: " + name);
+                writer.write("\n");
+                writer.write("bg: \"" + Utils.ColorToHex(bg) + "\"");
+                writer.write("\n");
+                writer.write("fg: \"" + Utils.ColorToHex(fg) + "\"");
+                writer.write("\n");
+                writer.write("bg_2: \"" + Utils.ColorToHex(bg_2) + "\"");
+                writer.write("\n");
+                writer.write("fg_2: \"" + Utils.ColorToHex(fg_2) + "\"");
+                writer.write("\n");
+                writer.write("btn: \"" + Utils.ColorToHex(btn) + "\"");
+                writer.write("\n");
+                writer.write("btn_fg: \"" + Utils.ColorToHex(btn_fg) + "\"");
+                writer.write("\n");
+                writer.write("textbox: \"" + Utils.ColorToHex(textbox) + "\"");
+                writer.write("\n");
+                writer.write("textbox_fg: \"" + Utils.ColorToHex(textbox_fg) + "\"");
+                writer.write("\n");
+                writer.write("list: \"" + Utils.ColorToHex(list) + "\"");
+                writer.write("\n");
+                writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
+                writer.write("\n");
+                writer.write("scrollbar: \"" + Utils.ColorToHex(scrollbar) + "\"");
+                writer.write("\n");
+                writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
+                writer.write("\n");
+                writer.write("progress_bar: \"" + Utils.ColorToHex(progress_bar) + "\"");
+                writer.write("\n");
+                writer.write("extra_0: \"" + Utils.ColorToHex(extra_0) + "\"");
+                writer.write("\n");
+                writer.write("extra_1: \"" + Utils.ColorToHex(extra_1) + "\"");
+                writer.write("\n");
+                writer.write("extra_2: \"" + Utils.ColorToHex(extra_2) + "\"");
+                writer.write("\n");
+                writer.write("extra_3: \"" + Utils.ColorToHex(extra_3) + "\"");
+                writer.write("\n");
+                writer.write("extra_4: \"" + Utils.ColorToHex(extra_4) + "\"");
+                writer.write("\n");
+                writer.write("extra_5: \"" + Utils.ColorToHex(extra_5) + "\"");
+                writer.write("\n");
+                writer.write("extra_6: \"" + Utils.ColorToHex(extra_6) + "\"");
+                writer.write("\n");
+                writer.write("extra_7: \"" + Utils.ColorToHex(extra_7) + "\"");
+                writer.write("\n");
+                writer.write("extra_8: \"" + Utils.ColorToHex(extra_8) + "\"");
+                writer.write("\n");
+                writer.write("extra_9: \"" + Utils.ColorToHex(extra_9) + "\"");
+                writer.write("\n");
+                
+                writer.close();
+
+                System.out.println("File created");
+                
+                try {
+                        sleep(500);
+                } catch (InterruptedException ex) {
+                        Logger.getLogger(Theme.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                return new YamlFile(dir);
+        }
+
         public String generateJson() {
                 JSONObject jsonObject = new JSONObject();
 
@@ -155,7 +226,6 @@ public class Theme {
                 jsonObject.put("extra_8", Utils.ColorToHex(extra_8));
                 jsonObject.put("extra_9", Utils.ColorToHex(extra_9));
 
-                json =  jsonObject.toString();
                 return json;
         }
 
@@ -173,7 +243,7 @@ public class Theme {
                 static String getJsonValue(String JsonString, String tag) {
                         tag = "\"" + tag + "\"";
                         int tagIndex = JsonString.indexOf(tag);
-//                System.out.println("Tag index: " + tagIndex);
+                        
                         if (tagIndex == -1) {
                                 return null;
                         }
