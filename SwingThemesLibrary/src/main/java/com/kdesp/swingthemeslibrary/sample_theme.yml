@@ -1,23 +1,23 @@
 name: Sample Theme
 
-bg: "000000"
-fg: "000000"
+bg: "FF6700"
+fg: "FFFFFF"
 
-bg_2: "000000"
+bg_2: "EBEBEB"
 fg_2: "000000"
 
-btn: "000000"
-btn_fg: "000000"
+btn: "004E98"
+btn_fg: "FFFFFF"
 
-textbox: "000000"
-textbox_fg: "000000"
+textbox: "1D7874"
+textbox_fg: "FFFFFF"
 
-list: "000000"
-list_fg: "000000"
-list_focus: "000000"
+list: "071E22"
+list_fg: "FFFFFF"
+list_focus: "EE2E31"
 
-scrollbar: "000000"
-progress_bar: "000000"
+scrollbar: "0B3948"
+progress_bar: "44AF69"
 
 # extra slots for additional colors
 extra_0: "000000"

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.kdesp.swingthemeslibrary;
 
 import java.awt.Color;
@@ -136,7 +133,7 @@ public class Theme {
         public void parseJson(String json) {
                 json = json.replaceAll(",", ", ");
 
-                name = Utils.getJsonValue(json, "name").replaceAll("\"", "");
+                name = Utils.getJsonValue(json, "name");
                 bg = Utils.hexToColor(Utils.getJsonValue(json, "bg").replaceAll("\"", ""));
                 fg = Utils.hexToColor(Utils.getJsonValue(json, "fg").replaceAll("\"", ""));
                 bg_2 = Utils.hexToColor(Utils.getJsonValue(json, "bg_2").replaceAll("\"", ""));
@@ -450,6 +447,16 @@ public class Theme {
 
         public void setExtras(Color[] extras) {
                 this.extras = extras;
+                extra_0 = extras[0];
+                extra_1 = extras[1];
+                extra_2 = extras[2];
+                extra_3 = extras[3];
+                extra_4 = extras[4];
+                extra_5 = extras[5];
+                extra_6 = extras[6];
+                extra_7 = extras[7];
+                extra_0 = extras[8];
+                extra_9 = extras[9];
         }
 
         @Override
