@@ -1,17 +1,26 @@
 name: Sample Theme
+
 bg: "000000"
 fg: "000000"
+
 bg_2: "000000"
 fg_2: "000000"
+
 btn: "000000"
 btn_fg: "000000"
+
 textbox: "000000"
 textbox_fg: "000000"
+
 list: "000000"
 list_fg: "000000"
+
 scrollbar: "000000"
 list_fg: "000000"
+
 progress_bar: "000000"
+
+# extra slots for additional colors
 extra_0: "000000"
 extra_1: "000001"
 extra_2: "000002"

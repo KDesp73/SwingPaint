@@ -101,13 +101,45 @@ public class Theme {
                 extra_9 = Utils.hexToColor(yaml.getValue("extra_9").toString());
 
                 extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
-                
+
                 this.yaml = yaml;
+        }
+
+        public void parseYaml(String dir) throws KeyNotFoundException, IOException {
+                YamlFile newYaml = new YamlFile(dir);
+
+                name = (String) newYaml.getValue("name");
+                bg = Utils.hexToColor(newYaml.getValue("bg").toString());
+                bg_2 = Utils.hexToColor(newYaml.getValue("bg_2").toString());
+                fg = Utils.hexToColor(newYaml.getValue("fg").toString());
+                fg_2 = Utils.hexToColor(newYaml.getValue("fg_2").toString());
+                btn = Utils.hexToColor(newYaml.getValue("btn").toString());
+                btn_fg = Utils.hexToColor(newYaml.getValue("btn_fg").toString());
+                textbox = Utils.hexToColor(newYaml.getValue("textbox").toString());
+                textbox_fg = Utils.hexToColor(newYaml.getValue("textbox_fg").toString());
+                list = Utils.hexToColor(newYaml.getValue("list").toString());
+                list_fg = Utils.hexToColor(newYaml.getValue("list_fg").toString());
+                scrollbar = Utils.hexToColor(newYaml.getValue("scrollbar").toString());
+                progress_bar = Utils.hexToColor(newYaml.getValue("progress_bar").toString());
+                extra_0 = Utils.hexToColor(newYaml.getValue("extra_0").toString());
+                extra_1 = Utils.hexToColor(newYaml.getValue("extra_1").toString());
+                extra_2 = Utils.hexToColor(newYaml.getValue("extra_2").toString());
+                extra_3 = Utils.hexToColor(newYaml.getValue("extra_3").toString());
+                extra_4 = Utils.hexToColor(newYaml.getValue("extra_4").toString());
+                extra_5 = Utils.hexToColor(newYaml.getValue("extra_5").toString());
+                extra_6 = Utils.hexToColor(newYaml.getValue("extra_6").toString());
+                extra_7 = Utils.hexToColor(newYaml.getValue("extra_7").toString());
+                extra_8 = Utils.hexToColor(newYaml.getValue("extra_8").toString());
+                extra_9 = Utils.hexToColor(newYaml.getValue("extra_9").toString());
+
+                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
+
+                this.yaml = newYaml;
         }
 
         public void parseJson(String json) {
                 json = json.replaceAll(",", ", ");
-                
+
                 name = Utils.getJsonValue(json, "name").replaceAll("\"", "");
                 bg = Utils.hexToColor(Utils.getJsonValue(json, "bg").replaceAll("\"", ""));
                 fg = Utils.hexToColor(Utils.getJsonValue(json, "fg").replaceAll("\"", ""));
@@ -137,65 +169,40 @@ public class Theme {
                 this.json = json;
         }
 
-        public YamlFile generateYaml(String dir) throws FileNotFoundException {
-                try (PrintWriter writer = new PrintWriter(new File(dir))) {
-                        writer.write("name: " + name);
-                        writer.write("\n");
-                        writer.write("bg: \"" + Utils.ColorToHex(bg) + "\"");
-                        writer.write("\n");
-                        writer.write("fg: \"" + Utils.ColorToHex(fg) + "\"");
-                        writer.write("\n");
-                        writer.write("bg_2: \"" + Utils.ColorToHex(bg_2) + "\"");
-                        writer.write("\n");
-                        writer.write("fg_2: \"" + Utils.ColorToHex(fg_2) + "\"");
-                        writer.write("\n");
-                        writer.write("btn: \"" + Utils.ColorToHex(btn) + "\"");
-                        writer.write("\n");
-                        writer.write("btn_fg: \"" + Utils.ColorToHex(btn_fg) + "\"");
-                        writer.write("\n");
-                        writer.write("textbox: \"" + Utils.ColorToHex(textbox) + "\"");
-                        writer.write("\n");
-                        writer.write("textbox_fg: \"" + Utils.ColorToHex(textbox_fg) + "\"");
-                        writer.write("\n");
-                        writer.write("list: \"" + Utils.ColorToHex(list) + "\"");
-                        writer.write("\n");
-                        writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
-                        writer.write("\n");
-                        writer.write("scrollbar: \"" + Utils.ColorToHex(scrollbar) + "\"");
-                        writer.write("\n");
-                        writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
-                        writer.write("\n");
-                        writer.write("progress_bar: \"" + Utils.ColorToHex(progress_bar) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_0: \"" + Utils.ColorToHex(extra_0) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_1: \"" + Utils.ColorToHex(extra_1) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_2: \"" + Utils.ColorToHex(extra_2) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_3: \"" + Utils.ColorToHex(extra_3) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_4: \"" + Utils.ColorToHex(extra_4) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_5: \"" + Utils.ColorToHex(extra_5) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_6: \"" + Utils.ColorToHex(extra_6) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_7: \"" + Utils.ColorToHex(extra_7) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_8: \"" + Utils.ColorToHex(extra_8) + "\"");
-                        writer.write("\n");
-                        writer.write("extra_9: \"" + Utils.ColorToHex(extra_9) + "\"");
-                        writer.write("\n");
-                }
+        public void parseJson(JsonString jsonString) {
+                String newJson = jsonString.getJson().replaceAll(",", ", ");
 
-                return new YamlFile(dir);
+                name = Utils.getJsonValue(newJson, "name").replaceAll("\"", "");
+                bg = Utils.hexToColor(Utils.getJsonValue(newJson, "bg").replaceAll("\"", ""));
+                fg = Utils.hexToColor(Utils.getJsonValue(newJson, "fg").replaceAll("\"", ""));
+                bg_2 = Utils.hexToColor(Utils.getJsonValue(newJson, "bg_2").replaceAll("\"", ""));
+                fg_2 = Utils.hexToColor(Utils.getJsonValue(newJson, "fg_2").replaceAll("\"", ""));
+                btn = Utils.hexToColor(Utils.getJsonValue(newJson, "btn").replaceAll("\"", ""));
+                btn_fg = Utils.hexToColor(Utils.getJsonValue(newJson, "btn_fg").replaceAll("\"", ""));
+                textbox = Utils.hexToColor(Utils.getJsonValue(newJson, "textbox").replaceAll("\"", ""));
+                textbox_fg = Utils.hexToColor(Utils.getJsonValue(newJson, "textbox_fg").replaceAll("\"", ""));
+                list = Utils.hexToColor(Utils.getJsonValue(newJson, "list").replaceAll("\"", ""));
+                list_fg = Utils.hexToColor(Utils.getJsonValue(newJson, "list_fg").replaceAll("\"", ""));
+                scrollbar = Utils.hexToColor(Utils.getJsonValue(newJson, "scrollbar").replaceAll("\"", ""));
+                progress_bar = Utils.hexToColor(Utils.getJsonValue(newJson, "progress_bar").replaceAll("\"", ""));
+                extra_0 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_0").replaceAll("\"", ""));
+                extra_1 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_1").replaceAll("\"", ""));
+                extra_2 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_2").replaceAll("\"", ""));
+                extra_3 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_3").replaceAll("\"", ""));
+                extra_4 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_4").replaceAll("\"", ""));
+                extra_5 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_5").replaceAll("\"", ""));
+                extra_6 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_6").replaceAll("\"", ""));
+                extra_7 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_7").replaceAll("\"", ""));
+                extra_8 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_8").replaceAll("\"", ""));
+                extra_9 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_9").replaceAll("\"", ""));
+
+                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
+
+                this.json = newJson;
         }
-        
-        public YamlFile generateYaml(YamlFile yf) throws FileNotFoundException {
-                String dir = yf.getDirectory();
-                
-                try (PrintWriter writer = new PrintWriter(new File(dir))) {
+
+        public YamlFile generateYaml(String dir) throws FileNotFoundException {
+                try ( PrintWriter writer = new PrintWriter(new File(dir))) {
                         writer.write("name: " + name);
                         writer.write("\n");
                         writer.write("bg: \"" + Utils.ColorToHex(bg) + "\"");
@@ -219,8 +226,6 @@ public class Theme {
                         writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
                         writer.write("\n");
                         writer.write("scrollbar: \"" + Utils.ColorToHex(scrollbar) + "\"");
-                        writer.write("\n");
-                        writer.write("list_fg: \"" + Utils.ColorToHex(list_fg) + "\"");
                         writer.write("\n");
                         writer.write("progress_bar: \"" + Utils.ColorToHex(progress_bar) + "\"");
                         writer.write("\n");
@@ -251,7 +256,7 @@ public class Theme {
 
         public String generateJson() {
                 JSONObject jsonObject = new JSONObject();
-                
+
                 jsonObject.put("name", name);
                 jsonObject.put("bg", Utils.ColorToHex(bg));
                 jsonObject.put("fg", Utils.ColorToHex(fg));
@@ -275,7 +280,7 @@ public class Theme {
                 jsonObject.put("extra_7", Utils.ColorToHex(extra_7));
                 jsonObject.put("extra_8", Utils.ColorToHex(extra_8));
                 jsonObject.put("extra_9", Utils.ColorToHex(extra_9));
-                
+
                 return jsonObject.toString();
         }
 
@@ -293,7 +298,7 @@ public class Theme {
                 static String getJsonValue(String JsonString, String tag) {
                         tag = "\"" + tag + "\"";
                         int tagIndex = JsonString.indexOf(tag);
-                        
+
                         if (tagIndex == -1) {
                                 return null;
                         }
@@ -442,29 +447,24 @@ public class Theme {
         @Override
         public String toString() {
                 String s = "";
-                
+
                 s = s + pair("Name", name);
-                if(yaml != null){
+                if (yaml != null) {
                         s = s + pair("YAML", yaml.getContents().toString());
-                }
-                else{
+                } else {
                         s = s + pair("YAML", null);
                 }
-                if(json != null){
+                if (json != null) {
                         s = s + pair("JSON", json);
-                }
-                else{
+                } else {
                         s = s + pair("JSON", null);
                 }
-                
-                
+
                 return s;
         }
-        
-        private String pair(String key, String value){
+
+        private String pair(String key, String value) {
                 return "" + key + ": " + value + "\n";
         }
-
-        
 
 }
