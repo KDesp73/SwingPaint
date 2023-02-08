@@ -98,7 +98,7 @@ git clone https://github.com/KDesp73/Swing-Themes-Library
 
 Contributions are always welcome!
 
-See [Contributing.md](https://github.com/KDesp73/Swing-Themes-Library/blob/main/Contributing.md) for ways to get started.
+See [Contributing.md](https://github.com/KDesp73/Swing-Themes-Library/blob/main/CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [Code of Conduct](https://github.com/KDesp73/Swing-Themes-Library/blob/main/CODE_OF_CONDUCT.md).
 
