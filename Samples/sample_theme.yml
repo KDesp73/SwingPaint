@@ -1,5 +1,7 @@
 name: Sample Theme
 
+# All values below should be in hex form without the '#'
+
 bg: "FF6700"
 fg: "FFFFFF"
 
