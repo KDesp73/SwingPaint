@@ -70,13 +70,23 @@ public class Theme {
         private Color extra_9;
         private Color[] extras;
 
+        /**
+         * Creates a theme using a JSON string
+         * 
+         * @param json JsonString object to be parsed
+         */
         public Theme(JsonString json) {
                 this.json = json.getJson();
 
                 //Parse json into theme
                 parseJson(json);
         }
-
+        
+        /**
+         * Creates a theme using a YAML file
+         * 
+         * @param yaml YamlFile object to be parsed
+         */
         public Theme(YamlFile yaml) {
                 this.yaml = yaml;
 
@@ -87,10 +97,20 @@ public class Theme {
                         Logger.getLogger(Theme.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
-
+        
+        /**
+         * Default constructor
+         */
         public Theme() {
         }
-
+        
+        /**
+         * Parse information from a YAML file into the Theme object
+         * 
+         * @param yaml YamlFile object to be parsed
+         * @throws KeyNotFoundException
+         * @throws IOException 
+         */
         public void parseYaml(YamlFile yaml) throws KeyNotFoundException, IOException {
                 name = (String) yaml.getValue("name");
                 bg = Utils.hexToColor(yaml.getValue("bg").toString());
@@ -121,7 +141,13 @@ public class Theme {
 
                 this.yaml = yaml;
         }
-
+        
+        /**
+         * Parse information from a JSON string into the Theme object
+         * 
+         * @param jsonString JsonString object to be parsed
+         * @throws KeyNotFoundException
+         */
         public void parseJson(JsonString jsonString) {
                 String newJson = jsonString.getJson().replaceAll(",", ", ");
 
@@ -154,7 +180,14 @@ public class Theme {
 
                 this.json = newJson;
         }
-
+        
+        /**
+         * Generate a YAML file containing the information of this Theme object
+         * 
+         * @param target_dir The directory into which the YAML file will be created
+         * @return YamlFile object
+         * @throws FileNotFoundException 
+         */
         public YamlFile generateYaml(String target_dir) throws FileNotFoundException {
                 try ( PrintWriter writer = new PrintWriter(new File(target_dir))) {
                         writer.write("name: " + name);
@@ -209,7 +242,12 @@ public class Theme {
 
                 return new YamlFile(target_dir);
         }
-
+        
+        /**
+         * Generate a JSON string containing the information of this Theme object
+         * 
+         * @return JsonString
+         */
         public JsonString generateJson() {
                 JSONObject jsonObject = new JSONObject();
 

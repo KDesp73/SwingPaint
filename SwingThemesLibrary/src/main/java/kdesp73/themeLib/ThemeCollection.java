@@ -22,8 +22,7 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
 * 
-*/
-
+ */
 package kdesp73.themeLib;
 
 import java.awt.Component;
@@ -44,7 +43,17 @@ public class ThemeCollection {
 
         }
 
-        public static void implementTheme(Component component, Theme theme) {
+        /**
+         * This method searches through every
+         * child of the parent container and
+         * applies the appropriate colors if the
+         * name matches the predetermined ones
+         *
+         * @param component The parent container
+         * the theme will be applied to
+         * @param theme Theme of choice
+         */
+        public static void applyTheme(Component component, Theme theme) {
                 String name = component.getName();
 
                 try {
@@ -127,11 +136,17 @@ public class ThemeCollection {
                 //Recurse through every component
                 if (component instanceof Container container) {
                         for (Component child : container.getComponents()) {
-                                implementTheme(child, theme);
+                                applyTheme(child, theme);
                         }
                 }
         }
 
+        /**
+         * Adds a theme to the themes field of
+         * the ThemeCollection object
+         *
+         * @param theme Theme to be added
+         */
         public void addTheme(Theme theme) {
                 themes.add(theme);
         }
@@ -147,6 +162,14 @@ public class ThemeCollection {
                 }
         }
 
+        /**
+         * Loads themes from a Array of JSON
+         * strings
+         *
+         * @param jsons Array of appropriate JSON
+         * strings to be loaded in the ArrayList
+         * field of the ThemeCollection object
+         */
         public void loadThemes(String[] jsons) {
                 themes.clear();
                 for (String json : jsons) {
@@ -154,7 +177,12 @@ public class ThemeCollection {
                         themes.add(newTheme);
                 }
         }
-
+        
+        /**
+         * Empties the themes field of
+         * the ThemeCollection object
+         *
+         */
         public void clear() {
                 themes.clear();
         }
@@ -185,14 +213,14 @@ public class ThemeCollection {
         @Override
         public String toString() {
                 String s = "";
-                
+
                 s = s + "Themes{";
                 for (int i = 0; i < themes.size(); i++) {
                         s = s + themes.get(i);
                         s = s + "\n";
                 }
                 s = s + "}";
-                
+
                 return s;
         }
 

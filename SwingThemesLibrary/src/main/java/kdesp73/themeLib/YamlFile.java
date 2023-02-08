@@ -43,7 +43,10 @@ import org.yaml.snakeyaml.Yaml;
 public class YamlFile {
         private String directory;
         private Map<String, Object> contents;
-
+        
+        /**
+         * @param directory Directory where the YAML file is located
+         */
         public YamlFile(String directory) {
                 this.directory = directory;
                 this.contents = getYamlData(directory);
@@ -62,6 +65,14 @@ public class YamlFile {
                 return data;
         }
         
+        /**
+         * Get a specific value from the YAML file using a key
+         * 
+         * @param key Key to search for matching value
+         * @return Value that matches the input key
+         * @throws IOException
+         * @throws KeyNotFoundException 
+         */
         public Object getValue(String key) throws IOException, KeyNotFoundException{
                 if(contents.get(key) == null) throw new KeyNotFoundException("Key Not Found");
                 return contents.get(key);
