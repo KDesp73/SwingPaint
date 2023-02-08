@@ -36,7 +36,7 @@
   
 * Generate Yaml from Theme
   ```java
-  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [targer directory]
+  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [target directory]
   ```
   
 * Generate Json from Theme
@@ -65,11 +65,11 @@
   themes.load(new String[]{[strings with theme information]});
   ```
   
-* Implement Theme on a container
+* Apply Theme on a container
   ```java
   JFrame frame = new JFrame();
   Theme theme = new Theme(); //non empty theme
-  ThemeCollection.implementTheme(frame, theme);
+  ThemeCollection.applyTheme(frame, theme);
   ```
 
 > Set your JComponent's name following the notation of the [sample_theme.yml](https://github.com/KDesp73/Swing-Themes-Library/blob/main/Samples/sample_theme.yml). This will determine the color of each component.
