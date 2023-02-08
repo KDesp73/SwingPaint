@@ -36,7 +36,7 @@
   
 * Generate Yaml from Theme
   ```java
-  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [targer directory]
+  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [target directory]
   ```
   
 * Generate Json from Theme
