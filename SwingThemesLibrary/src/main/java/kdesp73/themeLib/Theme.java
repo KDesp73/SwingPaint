@@ -31,6 +31,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
@@ -68,7 +70,7 @@ public class Theme {
         private Color extra_7;
         private Color extra_8;
         private Color extra_9;
-        private Color[] extras;
+        private ArrayList<Color> extras = new ArrayList<>();
 
         /**
          * Creates a theme using a JSON string
@@ -137,8 +139,17 @@ public class Theme {
                 extra_8 = Utils.hexToColor(yaml.getValue("extra_8").toString());
                 extra_9 = Utils.hexToColor(yaml.getValue("extra_9").toString());
 
-                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
-
+				extras.add(extra_0);
+				extras.add(extra_1);
+				extras.add(extra_2);
+				extras.add(extra_3);
+				extras.add(extra_4);
+				extras.add(extra_5);
+				extras.add(extra_6);
+				extras.add(extra_7);
+				extras.add(extra_8);
+				extras.add(extra_9);
+				
                 this.yaml = yaml;
         }
         
@@ -176,7 +187,16 @@ public class Theme {
                 extra_8 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_8").replaceAll("\"", ""));
                 extra_9 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_9").replaceAll("\"", ""));
 
-                extras = new Color[]{extra_0, extra_1, extra_2, extra_3, extra_4, extra_5, extra_6, extra_7, extra_8, extra_9};
+     			extras.add(extra_0);
+				extras.add(extra_1);
+				extras.add(extra_2);
+				extras.add(extra_3);
+				extras.add(extra_4);
+				extras.add(extra_5);
+				extras.add(extra_6);
+				extras.add(extra_7);
+				extras.add(extra_8);
+				extras.add(extra_9);           
 
                 this.json = newJson;
         }
@@ -438,23 +458,28 @@ public class Theme {
                 this.progress_bar = progress_bar;
         }
 
-        public Color[] getExtras() {
+        public ArrayList<Color> getExtras() {
                 return extras;
         }
 
-        public void setExtras(Color[] extras) {
+        public void setExtras(ArrayList<Color> extras) {
                 this.extras = extras;
-                extra_0 = extras[0];
-                extra_1 = extras[1];
-                extra_2 = extras[2];
-                extra_3 = extras[3];
-                extra_4 = extras[4];
-                extra_5 = extras[5];
-                extra_6 = extras[6];
-                extra_7 = extras[7];
-                extra_0 = extras[8];
-                extra_9 = extras[9];
+                extra_0 = extras.get(0);
+                extra_1 = extras.get(1);
+                extra_2 = extras.get(2);
+                extra_3 = extras.get(3);
+                extra_4 = extras.get(4);
+                extra_5 = extras.get(5);
+                extra_6 = extras.get(6);
+                extra_7 = extras.get(7);
+                extra_8 = extras.get(8);
+                extra_9 = extras.get(9);
+                
         }
+
+		public void setExtra(int index, Color extra){
+			extras.add(index, extra);
+		}
 
         @Override
         public String toString() {

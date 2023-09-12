@@ -97,34 +97,34 @@ public class ThemeCollection {
 					component.setBackground(theme.getProgress_bar());
 					break;
 				case "extra_0":
-					component.setBackground(theme.getExtras()[0]);
+					component.setBackground(theme.getExtras().get(0));
 					break;
 				case "extra_1":
-					component.setBackground(theme.getExtras()[1]);
+					component.setBackground(theme.getExtras().get(1));
 					break;
 				case "extra_2":
-					component.setBackground(theme.getExtras()[2]);
+					component.setBackground(theme.getExtras().get(2));
 					break;
 				case "extra_3":
-					component.setBackground(theme.getExtras()[3]);
+					component.setBackground(theme.getExtras().get(3));
 					break;
 				case "extra_4":
-					component.setBackground(theme.getExtras()[4]);
+					component.setBackground(theme.getExtras().get(4));
 					break;
 				case "extra_5":
-					component.setBackground(theme.getExtras()[5]);
+					component.setBackground(theme.getExtras().get(5));
 					break;
 				case "extra_6":
-					component.setBackground(theme.getExtras()[6]);
+					component.setBackground(theme.getExtras().get(6));
 					break;
 				case "extra_7":
-					component.setBackground(theme.getExtras()[7]);
+					component.setBackground(theme.getExtras().get(7));
 					break;
 				case "extra_8":
-					component.setBackground(theme.getExtras()[8]);
+					component.setBackground(theme.getExtras().get(8));
 					break;
 				case "extra_9":
-					component.setBackground(theme.getExtras()[9]);
+					component.setBackground(theme.getExtras().get(9));
 					break;
 				default:
 					break;
