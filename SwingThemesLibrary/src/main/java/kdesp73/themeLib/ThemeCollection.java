@@ -37,191 +37,199 @@ import javax.swing.JList;
  */
 public class ThemeCollection {
 
-        private ArrayList<Theme> themes = new ArrayList<>();
+	private ArrayList<Theme> themes = new ArrayList<>();
 
-        public ThemeCollection() {
+	public ThemeCollection() {
 
-        }
+	}
 
-        /**
-         * This method searches through every
-         * child of the parent container and
-         * applies the appropriate colors if the
-         * name matches the predetermined ones
-         *
-         * @param component The parent container
-         * the theme will be applied to
-         * @param theme Theme of choice
-         */
-        public static void applyTheme(Component component, Theme theme) {
-                String name = component.getName();
+	/**
+	 * This method searches through every
+	 * child of the parent container and
+	 * applies the appropriate colors if the
+	 * name matches the predetermined ones
+	 *
+	 * @param component The parent container
+	 *                  the theme will be applied to
+	 * @param theme     Theme of choice
+	 */
+	public static void applyTheme(Component component, Theme theme) {
+		String name = component.getName();
 
-                try {
-                        switch (name) {
-                                case "null.glassPane":
-                                        break;
-                                case "null.layeredPane":
-                                        break;
-                                case "null.contentPane":
-                                        break;
-                                case "bg":
-                                        component.setBackground(theme.getBg());
-                                        break;
-                                case "bg_2":
-                                        component.setBackground(theme.getBg_2());
-                                        break;
-                                case "fg":
-                                        component.setForeground(theme.getFg());
-                                        break;
-                                case "fg_2":
-                                        component.setForeground(theme.getFg_2());
-                                        break;
-                                case "btn":
-                                        component.setBackground(theme.getBtn());
-                                        component.setForeground(theme.getBtn_fg());
-                                        break;
-                                case "textbox":
-                                        component.setBackground(theme.getTextbox());
-                                        component.setForeground(theme.getTextbox_fg());
-                                        break;
-                                case "list":
-                                        if (component instanceof JList jList) {
-                                                jList.setBackground(theme.getList());
-                                                jList.setForeground(theme.getList_fg());
-                                                jList.setSelectionBackground(theme.getList_focus());
-                                        }
-                                        break;
-                                case "scrollbar":
-                                        component.setBackground(theme.getBg());
-                                case "progress_bar":
-                                        component.setBackground(theme.getProgress_bar());
-                                        break;
-                                case "extra_0":
-                                        component.setBackground(theme.getExtras()[0]);
-                                        break;
-                                case "extra_1":
-                                        component.setBackground(theme.getExtras()[1]);
-                                        break;
-                                case "extra_2":
-                                        component.setBackground(theme.getExtras()[2]);
-                                        break;
-                                case "extra_3":
-                                        component.setBackground(theme.getExtras()[3]);
-                                        break;
-                                case "extra_4":
-                                        component.setBackground(theme.getExtras()[4]);
-                                        break;
-                                case "extra_5":
-                                        component.setBackground(theme.getExtras()[5]);
-                                        break;
-                                case "extra_6":
-                                        component.setBackground(theme.getExtras()[6]);
-                                        break;
-                                case "extra_7":
-                                        component.setBackground(theme.getExtras()[7]);
-                                        break;
-                                case "extra_8":
-                                        component.setBackground(theme.getExtras()[8]);
-                                        break;
-                                case "extra_9":
-                                        component.setBackground(theme.getExtras()[9]);
-                                        break;
-                                default:
-                                        break;
-                        }
-                } catch (NullPointerException e) {
-                        //System.out.println("Null name");
-                }
+		try {
+			switch (name) {
+				case "null.glassPane":
+					break;
+				case "null.layeredPane":
+					break;
+				case "null.contentPane":
+					break;
+				case "bg":
+					component.setBackground(theme.getBg());
+					break;
+				case "bg_2":
+					component.setBackground(theme.getBg_2());
+					break;
+				case "fg":
+					component.setForeground(theme.getFg());
+					break;
+				case "fg_2":
+					component.setForeground(theme.getFg_2());
+					break;
+				case "btn":
+					component.setBackground(theme.getBtn());
+					component.setForeground(theme.getBtn_fg());
+					break;
+				case "textbox":
+					component.setBackground(theme.getTextbox());
+					component.setForeground(theme.getTextbox_fg());
+					break;
+				case "list":
+					if (component instanceof JList jList) {
+						jList.setBackground(theme.getList());
+						jList.setForeground(theme.getList_fg());
+						jList.setSelectionBackground(theme.getList_focus());
+					}
+					break;
+				case "scrollbar":
+					component.setBackground(theme.getBg());
+				case "progress_bar":
+					component.setBackground(theme.getProgress_bar());
+					break;
+				case "extra_0":
+					component.setBackground(theme.getExtras()[0]);
+					break;
+				case "extra_1":
+					component.setBackground(theme.getExtras()[1]);
+					break;
+				case "extra_2":
+					component.setBackground(theme.getExtras()[2]);
+					break;
+				case "extra_3":
+					component.setBackground(theme.getExtras()[3]);
+					break;
+				case "extra_4":
+					component.setBackground(theme.getExtras()[4]);
+					break;
+				case "extra_5":
+					component.setBackground(theme.getExtras()[5]);
+					break;
+				case "extra_6":
+					component.setBackground(theme.getExtras()[6]);
+					break;
+				case "extra_7":
+					component.setBackground(theme.getExtras()[7]);
+					break;
+				case "extra_8":
+					component.setBackground(theme.getExtras()[8]);
+					break;
+				case "extra_9":
+					component.setBackground(theme.getExtras()[9]);
+					break;
+				default:
+					break;
+			}
+		} catch (NullPointerException e) {
+			// System.out.println("Null name");
+		}
 
-                //Recurse through every component
-                if (component instanceof Container container) {
-                        for (Component child : container.getComponents()) {
-                                applyTheme(child, theme);
-                        }
-                }
-        }
+		// Recurse through every component
+		if (component instanceof Container container) {
+			for (Component child : container.getComponents()) {
+				applyTheme(child, theme);
+			}
+		}
+	}
 
-        /**
-         * Adds a theme to the themes field of
-         * the ThemeCollection object
-         *
-         * @param theme Theme to be added
-         */
-        public void addTheme(Theme theme) {
-                themes.add(theme);
-        }
+	public Theme matchTheme(String themeName) {
+		for (Theme theme : themes) {
+			if(theme.getName().equals(themeName))
+				return theme;
+		}
+		return null;
+	}
 
-        public void loadThemes(File folder_dir) {
-                themes.clear();
-                ArrayList<String> yamlFiles = Utils.listFiles(folder_dir);
+	/**
+	 * Adds a theme to the themes field of
+	 * the ThemeCollection object
+	 *
+	 * @param theme Theme to be added
+	 */
+	public void addTheme(Theme theme) {
+		themes.add(theme);
+	}
 
-                for (int i = 0; i < yamlFiles.size(); i++) {
-                        System.out.println(folder_dir.getPath() + yamlFiles.get(i));
-                        Theme newTheme = new Theme(new YamlFile(folder_dir.getPath() + "\\" + yamlFiles.get(i)));
-                        themes.add(newTheme);
-                }
-        }
+	public void loadThemes(File folder_dir) {
+		themes.clear();
+		ArrayList<String> yamlFiles = Utils.listFiles(folder_dir);
 
-        /**
-         * Loads themes from a Array of JSON
-         * strings
-         *
-         * @param jsons Array of appropriate JSON
-         * strings to be loaded in the ArrayList
-         * field of the ThemeCollection object
-         */
-        public void loadThemes(String[] jsons) {
-                themes.clear();
-                for (String json : jsons) {
-                        Theme newTheme = new Theme(new JsonString(json));
-                        themes.add(newTheme);
-                }
-        }
-        
-        /**
-         * Empties the themes field of
-         * the ThemeCollection object
-         *
-         */
-        public void clear() {
-                themes.clear();
-        }
+		for (int i = 0; i < yamlFiles.size(); i++) {
+			System.out.println(folder_dir.getPath() + yamlFiles.get(i));
+			Theme newTheme = new Theme(new YamlFile(folder_dir.getPath() + "\\" + yamlFiles.get(i)));
+			themes.add(newTheme);
+		}
+	}
 
-        private class Utils {
+	/**
+	 * Loads themes from a Array of JSON
+	 * strings
+	 *
+	 * @param jsons Array of appropriate JSON
+	 *              strings to be loaded in the ArrayList
+	 *              field of the ThemeCollection object
+	 */
+	public void loadThemes(String[] jsons) {
+		themes.clear();
+		for (String json : jsons) {
+			Theme newTheme = new Theme(new JsonString(json));
+			themes.add(newTheme);
+		}
+	}
 
-                private static ArrayList<String> listFiles(final File folder) {
-                        ArrayList<String> arr = new ArrayList<>();
-                        for (final File fileEntry : folder.listFiles()) {
-                                if (fileEntry.isDirectory()) {
-                                        listFiles(fileEntry);
-                                } else {
-                                        arr.add(fileEntry.getName());
-                                }
-                        }
-                        return arr;
-                }
-        }
+	/**
+	 * Empties the themes field of
+	 * the ThemeCollection object
+	 *
+	 */
+	public void clear() {
+		themes.clear();
+	}
 
-        public ArrayList<Theme> getThemes() {
-                return themes;
-        }
+	private class Utils {
 
-        public void setThemes(ArrayList<Theme> themes) {
-                this.themes = themes;
-        }
+		private static ArrayList<String> listFiles(final File folder) {
+			ArrayList<String> arr = new ArrayList<>();
+			for (final File fileEntry : folder.listFiles()) {
+				if (fileEntry.isDirectory()) {
+					listFiles(fileEntry);
+				} else {
+					arr.add(fileEntry.getName());
+				}
+			}
+			return arr;
+		}
+	}
 
-        @Override
-        public String toString() {
-                String s = "";
+	public ArrayList<Theme> getThemes() {
+		return themes;
+	}
 
-                s = s + "Themes{";
-                for (int i = 0; i < themes.size(); i++) {
-                        s = s + themes.get(i);
-                        s = s + "\n";
-                }
-                s = s + "}";
+	public void setThemes(ArrayList<Theme> themes) {
+		this.themes = themes;
+	}
 
-                return s;
-        }
+	@Override
+	public String toString() {
+		String s = "";
+
+		s = s + "Themes{";
+		for (int i = 0; i < themes.size(); i++) {
+			s = s + themes.get(i);
+			s = s + "\n";
+		}
+		s = s + "}";
+
+		return s;
+	}
 
 }
