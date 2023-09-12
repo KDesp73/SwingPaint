@@ -80,10 +80,10 @@ public class Theme {
         public Theme(JsonString json) {
                 this.json = json.getJson();
 
-                //Parse json into theme
+                // Parse json into theme
                 parseJson(json);
         }
-        
+
         /**
          * Creates a theme using a YAML file
          * 
@@ -93,25 +93,25 @@ public class Theme {
                 this.yaml = yaml;
 
                 try {
-                        //Parse yaml into theme
+                        // Parse yaml into theme
                         parseYaml(yaml);
                 } catch (KeyNotFoundException | IOException ex) {
                         Logger.getLogger(Theme.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
-        
+
         /**
          * Default constructor
          */
         public Theme() {
         }
-        
+
         /**
          * Parse information from a YAML file into the Theme object
          * 
          * @param yaml YamlFile object to be parsed
          * @throws KeyNotFoundException
-         * @throws IOException 
+         * @throws IOException
          */
         public void parseYaml(YamlFile yaml) throws KeyNotFoundException, IOException {
                 name = (String) yaml.getValue("name");
@@ -139,20 +139,20 @@ public class Theme {
                 extra_8 = Utils.hexToColor(yaml.getValue("extra_8").toString());
                 extra_9 = Utils.hexToColor(yaml.getValue("extra_9").toString());
 
-				extras.add(extra_0);
-				extras.add(extra_1);
-				extras.add(extra_2);
-				extras.add(extra_3);
-				extras.add(extra_4);
-				extras.add(extra_5);
-				extras.add(extra_6);
-				extras.add(extra_7);
-				extras.add(extra_8);
-				extras.add(extra_9);
-				
+                extras.add(extra_0);
+                extras.add(extra_1);
+                extras.add(extra_2);
+                extras.add(extra_3);
+                extras.add(extra_4);
+                extras.add(extra_5);
+                extras.add(extra_6);
+                extras.add(extra_7);
+                extras.add(extra_8);
+                extras.add(extra_9);
+
                 this.yaml = yaml;
         }
-        
+
         /**
          * Parse information from a JSON string into the Theme object
          * 
@@ -187,29 +187,29 @@ public class Theme {
                 extra_8 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_8").replaceAll("\"", ""));
                 extra_9 = Utils.hexToColor(Utils.getJsonValue(newJson, "extra_9").replaceAll("\"", ""));
 
-     			extras.add(extra_0);
-				extras.add(extra_1);
-				extras.add(extra_2);
-				extras.add(extra_3);
-				extras.add(extra_4);
-				extras.add(extra_5);
-				extras.add(extra_6);
-				extras.add(extra_7);
-				extras.add(extra_8);
-				extras.add(extra_9);           
+                extras.add(extra_0);
+                extras.add(extra_1);
+                extras.add(extra_2);
+                extras.add(extra_3);
+                extras.add(extra_4);
+                extras.add(extra_5);
+                extras.add(extra_6);
+                extras.add(extra_7);
+                extras.add(extra_8);
+                extras.add(extra_9);
 
                 this.json = newJson;
         }
-        
+
         /**
          * Generate a YAML file containing the information of this Theme object
          * 
          * @param target_dir The directory into which the YAML file will be created
          * @return YamlFile object
-         * @throws FileNotFoundException 
+         * @throws FileNotFoundException
          */
         public YamlFile generateYaml(String target_dir) throws FileNotFoundException {
-                try ( PrintWriter writer = new PrintWriter(new File(target_dir))) {
+                try (PrintWriter writer = new PrintWriter(new File(target_dir))) {
                         writer.write("name: " + name);
                         writer.write("\n");
                         writer.write("bg: \"" + Utils.ColorToHex(bg) + "\"");
@@ -262,7 +262,7 @@ public class Theme {
 
                 return new YamlFile(target_dir);
         }
-        
+
         /**
          * Generate a JSON string containing the information of this Theme object
          * 
@@ -282,6 +282,7 @@ public class Theme {
                 jsonObject.put("textbox_fg", Utils.ColorToHex(textbox_fg));
                 jsonObject.put("list", Utils.ColorToHex(list));
                 jsonObject.put("list_fg", Utils.ColorToHex(list_fg));
+                jsonObject.put("list_focus", Utils.ColorToHex(list_focus));
                 jsonObject.put("scrollbar", Utils.ColorToHex(scrollbar));
                 jsonObject.put("progress_bar", Utils.ColorToHex(progress_bar));
                 jsonObject.put("extra_0", Utils.ColorToHex(extra_0));
@@ -294,6 +295,8 @@ public class Theme {
                 jsonObject.put("extra_7", Utils.ColorToHex(extra_7));
                 jsonObject.put("extra_8", Utils.ColorToHex(extra_8));
                 jsonObject.put("extra_9", Utils.ColorToHex(extra_9));
+
+                this.json = jsonObject.toString();
 
                 return new JsonString(jsonObject.toString());
         }
@@ -325,7 +328,8 @@ public class Theme {
                         }
 
                         String value = JsonString.substring(begin, end);
-                        return value.replaceAll("\\]", "").replaceAll("\\[", "").replaceAll("\\}", "").replaceAll("\n", "").strip();
+                        return value.replaceAll("\\]", "").replaceAll("\\[", "").replaceAll("\\}", "")
+                                        .replaceAll("\n", "").strip();
                 }
 
         }
@@ -441,7 +445,7 @@ public class Theme {
         public void setList_focus(Color list_focus) {
                 this.list_focus = list_focus;
         }
-        
+
         public Color getScrollbar() {
                 return scrollbar;
         }
@@ -474,12 +478,12 @@ public class Theme {
                 extra_7 = extras.get(7);
                 extra_8 = extras.get(8);
                 extra_9 = extras.get(9);
-                
+
         }
 
-		public void setExtra(int index, Color extra){
-			extras.add(index, extra);
-		}
+        public void setExtra(int index, Color extra) {
+                extras.add(index, extra);
+        }
 
         @Override
         public String toString() {

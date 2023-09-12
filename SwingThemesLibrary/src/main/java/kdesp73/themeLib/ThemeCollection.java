@@ -29,6 +29,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.io.File;
 import java.util.ArrayList;
+
 import javax.swing.JList;
 
 /**
@@ -143,7 +144,7 @@ public class ThemeCollection {
 
 	public Theme matchTheme(String themeName) {
 		for (Theme theme : themes) {
-			if(theme.getName().equals(themeName))
+			if (theme.getName().equals(themeName))
 				return theme;
 		}
 		return null;
@@ -164,8 +165,19 @@ public class ThemeCollection {
 		ArrayList<String> yamlFiles = Utils.listFiles(folder_dir);
 
 		for (int i = 0; i < yamlFiles.size(); i++) {
-			System.out.println(folder_dir.getPath() + yamlFiles.get(i));
-			Theme newTheme = new Theme(new YamlFile(folder_dir.getPath() + "\\" + yamlFiles.get(i)));
+			Theme newTheme = null;
+
+			String osName = System.getProperty("os.name");
+
+			// You can perform OS-specific operations based on the value of osName
+			if (osName.toLowerCase().contains("windows")) {
+				newTheme = new Theme(new YamlFile(folder_dir.getPath() + "\\" + yamlFiles.get(i)));
+			} else if (osName.toLowerCase().contains("linux")) {
+				newTheme = new Theme(new YamlFile(folder_dir.getPath() + "/" + yamlFiles.get(i)));
+			} else {
+				System.out.println("Unsupported operating system.");
+			}
+
 			themes.add(newTheme);
 		}
 	}
