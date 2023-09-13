@@ -3,17 +3,17 @@
 * MIT License
 *
 * Copyright (c) 2023 Konstantinos Despoinidis
-* 
+*
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
 * in the Software without restriction, including without limitation the rights
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in all
 * copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-* 
+*
 */
 
 package kdesp73.themeLib;
@@ -32,7 +32,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
@@ -47,34 +46,34 @@ public class Theme {
         private String json;
         private YamlFile yaml;
 
-        private Color bg;
-        private Color bg_2;
-        private Color fg;
-        private Color fg_2;
-        private Color btn;
-        private Color btn_fg;
-        private Color textbox;
-        private Color textbox_fg;
-        private Color list;
-        private Color list_fg;
-        private Color list_focus;
-        private Color scrollbar;
-        private Color progress_bar;
-        private Color extra_0;
-        private Color extra_1;
-        private Color extra_2;
-        private Color extra_3;
-        private Color extra_4;
-        private Color extra_5;
-        private Color extra_6;
-        private Color extra_7;
-        private Color extra_8;
-        private Color extra_9;
+        private Color bg = Color.black;
+        private Color bg_2 = Color.black;
+        private Color fg = Color.black;
+        private Color fg_2 = Color.black;
+        private Color btn = Color.black;
+        private Color btn_fg = Color.black;
+        private Color textbox = Color.black;
+        private Color textbox_fg = Color.black;
+        private Color list = Color.black;
+        private Color list_fg = Color.black;
+        private Color list_focus = Color.black;
+        private Color scrollbar = Color.black;
+        private Color progress_bar = Color.black;
+        private Color extra_0 = Color.black;
+        private Color extra_1 = Color.black;
+        private Color extra_2 = Color.black;
+        private Color extra_3 = Color.black;
+        private Color extra_4 = Color.black;
+        private Color extra_5 = Color.black;
+        private Color extra_6 = Color.black;
+        private Color extra_7 = Color.black;
+        private Color extra_8 = Color.black;
+        private Color extra_9 = Color.black;
         private ArrayList<Color> extras = new ArrayList<>();
 
         /**
          * Creates a theme using a JSON string
-         * 
+         *
          * @param json JsonString object to be parsed
          */
         public Theme(JsonString json) {
@@ -86,7 +85,7 @@ public class Theme {
 
         /**
          * Creates a theme using a YAML file
-         * 
+         *
          * @param yaml YamlFile object to be parsed
          */
         public Theme(YamlFile yaml) {
@@ -108,7 +107,7 @@ public class Theme {
 
         /**
          * Parse information from a YAML file into the Theme object
-         * 
+         *
          * @param yaml YamlFile object to be parsed
          * @throws KeyNotFoundException
          * @throws IOException
@@ -155,7 +154,7 @@ public class Theme {
 
         /**
          * Parse information from a JSON string into the Theme object
-         * 
+         *
          * @param jsonString JsonString object to be parsed
          * @throws KeyNotFoundException
          */
@@ -203,7 +202,7 @@ public class Theme {
 
         /**
          * Generate a YAML file containing the information of this Theme object
-         * 
+         *
          * @param target_dir The directory into which the YAML file will be created
          * @return YamlFile object
          * @throws FileNotFoundException
@@ -265,7 +264,7 @@ public class Theme {
 
         /**
          * Generate a JSON string containing the information of this Theme object
-         * 
+         *
          * @return JsonString
          */
         public JsonString generateJson() {
@@ -464,6 +463,10 @@ public class Theme {
 
         public ArrayList<Color> getExtras() {
                 return extras;
+        }
+
+        public Color getExtra(int index) {
+                return extras.get(index);
         }
 
         public void setExtras(ArrayList<Color> extras) {
