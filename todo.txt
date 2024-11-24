@@ -1,1 +1,2 @@
-TODO: general improvements
+TODO: implement Painters for menu components
+DONE: general improvements

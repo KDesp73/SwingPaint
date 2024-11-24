@@ -1,7 +1,7 @@
 # SwingPaint
 
-An easy to use and integrate library to that makes
-coloring and theming a desktop application simple
+A user-friendly library that simplifies coloring and theming,
+making it easy to integrate into existing desktop applications.
 
 ## Dependency
 
