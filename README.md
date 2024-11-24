@@ -5,9 +5,9 @@ making it easy to integrate into existing desktop applications.
 
 ## Dependency
 
-### Maven
-
 [Maven Central](https://central.sonatype.com/artifact/io.github.kdesp73/SwingPaint)
+
+### Maven
 
 ```xml
 <dependency>
