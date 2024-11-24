@@ -1,98 +1,62 @@
-# Swing Themes Library
+# SwingPaint
 
-## Tutorial
+An easy to use and integrate library to that makes
+coloring and theming a desktop application simple
 
-* Import SwingThemesLibrary in your project as a dependency (see [Releases](https://github.com/KDesp73/Swing-Themes-Library/releases) for .jar file)
-
-### Themes
-
-* Create a theme
-
-  ```java
-  Theme theme = new Theme(); //And insert each color by hand
-
-  //or
-
-  Theme theme_json = new Theme(new JsonString(your_json_string);
-
-  //or
-
-  Theme theme_yaml = new Theme(new YamlFile(full_file_directory]);
-  ```
-
-* Parse Yaml file
-  ```java
-  Theme theme = new Theme();
-  
-  theme.parseYaml(new YamlFile(full_file_directory);
-  ```
-
-* Parse Json
-  ```java
-  Theme theme = new Theme();
-  
-  theme.parseJson(new JsonString(your_json_string);
-  ```
-  
-* Generate Yaml from Theme
-  ```java
-  YamlFile yaml = existing_theme.generateYaml(target_directory); //Creates .yml file in [target directory]
-  ```
-  
-* Generate Json from Theme
-  ```java
-  JsonString json = existing_theme.generateJson();
-  ```
-  
-### ThemeCollection
-
-* Create a ThemeCollection
-  ```java
-  ThemeCollection themes = new ThemeCollection(); // No other constructor exists
-  ```
-  
-* Add a theme
-  ```java
-  themes.add(new Theme());
-  ```
-  
-* Load themes
-  ```java
-  themes.load(new File(folder_path)); // Folder containing .yml files with wanted themes
-  
-  //or
-  
-  themes.load(new String[]{[strings with theme information]});
-  ```
-  
-* Apply Theme on a container
-  ```java
-  JFrame frame = new JFrame();
-  Theme theme = new Theme(); //non empty theme
-  ThemeCollection.applyTheme(frame, theme);
-  ```
-
-> Set your JComponent's name following the notation of the [sample_theme.yml](https://github.com/KDesp73/Swing-Themes-Library/blob/main/Samples/sample_theme.yml). This will determine the color of each component.
-
-## Dependencies
+## Dependency
 
 ```xml
 <dependency>
-    <groupId>kdesp73.themeLib</groupId>
-    <artifactId>SwingThemesLibrary</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <groupId>io.github.kdesp73</groupId>
+    <artifactId>SwingPaint</artifactId>
+    <version>1.1.0</version>
 </dependency>
 ```
 
+## Usage
 
-## Clone
+```java
+import io.github.kdesp73.swingpaint.Theme;
 
-```bash
-git clone https://github.com/KDesp73/Swing-Themes-Library
+import javax.swing.*;
+
+public class MainFrame extends JFrame {
+
+	@Paint(name = "button")
+	private JButton button1;
+
+	@Paint(name = "button")
+	private JButton button2;
+
+	@Paint(name = "myspinner")
+	private JSpinner spinner1;
+
+	MainFrame() {
+		initComponents();
+
+		Theme theme = new Theme();
+		theme.load("light");
+		theme.apply(this);
+	}
+}
+
 ```
 
-## TODO
-* Make dependency fully public on the Maven repository
+### Theme file
+
+File path: `src/main/resources/themes/light.properties`
+
+```properties
+button.bg = #282828
+button.fg = #FFFFFF
+
+myspinner.bg = #282828
+myspinner.fg = #FFFFFF
+myspinner.border = #000000
+myspinner.button.bg = #FF00FF
+myspinner.textfield.bg = #92AB01
+myspinner.textfield.fg = #FFEEFF
+```
 
 ## Contributing
 
@@ -101,11 +65,6 @@ Contributions are always welcome!
 See [Contributing.md](https://github.com/KDesp73/Swing-Themes-Library/blob/main/CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [Code of Conduct](https://github.com/KDesp73/Swing-Themes-Library/blob/main/CODE_OF_CONDUCT.md).
-
-## Authors
-
-- [@KDesp73](https://github.com/KDesp73)
-
 
 ## License
 

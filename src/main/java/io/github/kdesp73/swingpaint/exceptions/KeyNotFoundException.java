@@ -24,55 +24,14 @@
 *
 */
 
-package kdesp73.themeLib;
+package io.github.kdesp73.swingpaint.exceptions;
 
 /**
  *
  * @author KDesp73
  */
-public class JsonString {
-	private String json;
-
-	public JsonString() {
-	}
-
-	public JsonString(String json) {
-		this.json = json;
-	}
-
-	public String getJson() {
-		return json;
-	}
-
-	public void setJson(String json) {
-		this.json = json;
-	}
-
-	public String getJsonValue(String tag) {
-		String JsonString = this.json;
-
-		tag = "\"" + tag + "\"";
-		int tagIndex = JsonString.indexOf(tag);
-
-		if (tagIndex == -1) {
-			return null;
-		}
-
-		int begin = tagIndex + tag.length() + 2; // "+2" For space and comma
-		int end = JsonString.indexOf(',', begin);
-
-		if (end == -1) {
-			end = JsonString.indexOf('}', begin);
-		}
-
-		String value = JsonString.substring(begin, end);
-		return value.replaceAll("\\]", "").replaceAll("\\[", "").replaceAll("\\}", "")
-				.replaceAll("\n", "").strip();
-	}
-
-	@Override
-	public String toString() {
-		return "JsonString{" + "json=" + json + '}';
-	}
-
+public class KeyNotFoundException extends RuntimeException{
+        public KeyNotFoundException(String err){
+                super(err);
+        }
 }
