@@ -122,6 +122,25 @@ public class Theme {
 		this.properties = new Properties();
 	}
 
+	public Theme(String name) {
+		this.properties = new Properties();
+        try {
+            this.load(name);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+	public Theme(String name, JFrame target) {
+		this.properties = new Properties();
+		try {
+			this.load(name);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		this.apply(target);
+	}
+
 	// Set a color property for a specific component and property (e.g., "button.bg")
 	public void setColor(String component, ColorProperty property, Color color) {
 		String key = component + "." + property.toString();
