@@ -23,8 +23,10 @@ public class GlobalPainter {
 		paintersMap.put(JLabel.class, LabelPainter.class);
 		paintersMap.put(JLayeredPane.class, LayeredPanePainter.class);
 		paintersMap.put(JList.class, ListPainter.class);
+		paintersMap.put(JMenuBar.class, MenuBarPainter.class);
 		paintersMap.put(JPanel.class, PanelPainter.class);
 		paintersMap.put(JPasswordField.class, PasswordFieldPainter.class);
+		paintersMap.put(JPopupMenu.class, PopupMenuPainter.class);
 		paintersMap.put(JProgressBar.class, ProgressBarPainter.class);
 		paintersMap.put(JScrollBar.class, ScrollBarPainter.class);
 		paintersMap.put(JScrollPane.class, ScrollPanePainter.class);
@@ -63,6 +65,10 @@ public class GlobalPainter {
 		}
 
 		switch (painter) {
+			case MenuBarPainter menuBarPainter -> {
+				menuBarPainter.setMenuItemBackgroundColor(theme.getColor(name, Theme.ColorProperty.MENUITEM_BG));
+				menuBarPainter.setMenuItemForegroundColor(theme.getColor(name, Theme.ColorProperty.MENUITEM_FG));
+			}
 			case TreePainter treePainter -> {
 				treePainter.setSelectionColors(
 					theme.getColor(name, Theme.ColorProperty.SELECTED_BG),

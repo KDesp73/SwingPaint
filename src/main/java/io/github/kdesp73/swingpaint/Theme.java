@@ -13,39 +13,41 @@ public class Theme {
 	private final Properties properties;
 
 	public enum ColorProperty {
-		HEADER_BG("header.bg"),
-		HEADER_FG("header.fg"),
 		BG("bg"),
 		BORDER_COLOR("border.color"),
 		BORDER_THICKNESS("border.thickness"),
+		BUTTON_BG("button.bg"),
 		CARET_COLOR("caret.color"),
 		DISABLED("disabled"),
 		DIVIDER_COLOR("divider.color"),
 		FG("fg"),
 		FONT_COLOR("font.color"),
+		HEADER_BG("header.bg"),
+		HEADER_FG("header.fg"),
 		HIGHLIGHT("highlight"),
-		ICON_COLOR("icon.color"),
-		POPUP_BG("popup.bg"),
-		POPUP_FG("popup.fg"),
-		TEXTFIELD_BG("textfield.bg"),
-		TEXTFIELD_FG("textfield.fg"),
-		BUTTON_BG("button.bg"),
 		HORIZONTAL_THUMB("horizontal.thumb"),
 		HORIZONTAL_TRACK("horizontal.track"),
-		VERTICAL_THUMB("vertical.thumb"),
-		VERTICAL_TRACK("vertical.track"),
-		THUMB("thumb"),
-		TRACK("track"),
-		TICK("tick"),
+		ICON_COLOR("icon.color"),
+		MENUITEM_BG("menuitem.bg"),
+		MENUITEM_FG("menuitem.fg"),
+		PLACEHOLDER_COLOR("placeholder.color"),
+		POPUP_BG("popup.bg"),
+		POPUP_FG("popup.fg"),
 		SELECTED("selected"),
 		SELECTED_BG("selection.bg"),
 		SELECTED_FG("selection.fg"),
 		TAB_BG("tab.bg"),
 		TAB_FG("tab.fg"),
+		TEXTFIELD_BG("textfield.bg"),
+		TEXTFIELD_FG("textfield.fg"),
+		THUMB("thumb"),
+		TICK("tick"),
 		TITLE_BG("title.bg"),
 		TITLE_FG("title.fg"),
-		PLACEHOLDER_COLOR("placeholder.color"),
-		UNSELECTED("unselected");
+		TRACK("track"),
+		UNSELECTED("unselected"),
+		VERTICAL_THUMB("vertical.thumb"),
+		VERTICAL_TRACK("vertical.track");
 
 		private final String name;
 
@@ -75,6 +77,44 @@ public class Theme {
 				}
 			}
 			return false;
+		}
+
+		private static void printProperties(ColorProperty... properties){
+			for(ColorProperty p : properties){
+				System.out.println(p);
+			}
+		}
+
+		private static Map<Class<? extends JComponent>, ColorProperty[]> propertiesMap = new HashMap<>();
+		static {
+			propertiesMap.put(JMenu.class, new ColorProperty[]{MENUITEM_BG, MENUITEM_FG});
+			propertiesMap.put(JTree.class, new ColorProperty[]{SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JTextPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JTextField.class, new ColorProperty[]{PLACEHOLDER_COLOR, DISABLED, CARET_COLOR});
+			propertiesMap.put(JTextArea.class, new ColorProperty[]{CARET_COLOR, DISABLED, SELECTED_BG, SELECTED_FG, PLACEHOLDER_COLOR});
+			propertiesMap.put(JTable.class, new ColorProperty[]{HEADER_BG, HEADER_FG, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JSpinner.class, new ColorProperty[]{BUTTON_BG, TEXTFIELD_BG, TEXTFIELD_FG});
+			propertiesMap.put(JSlider.class, new ColorProperty[]{THUMB, TRACK, TICK});
+			propertiesMap.put(JScrollBar.class, new ColorProperty[]{THUMB, TRACK});
+			propertiesMap.put(JProgressBar.class, new ColorProperty[]{TRACK});
+			propertiesMap.put(JFormattedTextField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JPasswordField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JEditorPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JCheckBox.class, new ColorProperty[]{SELECTED, UNSELECTED});
+			propertiesMap.put(JComboBox.class, new ColorProperty[]{POPUP_BG, POPUP_FG});
+			propertiesMap.put(JInternalFrame.class, new ColorProperty[]{TITLE_BG, TITLE_FG});
+			propertiesMap.put(JList.class, new ColorProperty[]{SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JToggleButton.class, new ColorProperty[]{SELECTED, UNSELECTED});
+			propertiesMap.put(JScrollPane.class, new ColorProperty[]{HORIZONTAL_THUMB, HORIZONTAL_TRACK, VERTICAL_THUMB, VERTICAL_TRACK});
+			propertiesMap.put(JSplitPane.class, new ColorProperty[]{DIVIDER_COLOR});
+			propertiesMap.put(JTabbedPane.class, new ColorProperty[]{TAB_BG, TAB_FG});
+		}
+
+		public static void printMatchingProperties(Class<? extends JComponent> clazz) {
+			printProperties(BG, FG, BORDER_COLOR, BORDER_THICKNESS);
+			ColorProperty[] additionalProperties = propertiesMap.get(clazz);
+			if(additionalProperties == null) return;
+			printProperties(additionalProperties);
 		}
 	}
 
