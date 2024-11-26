@@ -3,7 +3,7 @@
 # General Configuration
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "SwingPaint Documentation"
-PROJECT_NUMBER         = 1.1.1
+PROJECT_NUMBER         = 1.1.2
 PROJECT_BRIEF          = "An easy to use and integrate library to that makes coloring and theming a desktop application simple"
 OUTPUT_DIRECTORY       = ./docs
 CREATE_SUBDIRS         = YES

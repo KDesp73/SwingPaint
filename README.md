@@ -13,14 +13,14 @@ making it easy to integrate into existing desktop applications.
 <dependency>
     <groupId>io.github.kdesp73</groupId>
     <artifactId>SwingPaint</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```text
-implementation 'io.github.kdesp73:SwingPaint:1.1.1'
+implementation 'io.github.kdesp73:SwingPaint:1.1.2'
 ```
 
 ## Usage
