@@ -26,16 +26,16 @@ implementation 'io.github.kdesp73:SwingPaint:1.1.2'
 ## Usage
 
 ```java
-@PaintAll("label", JLabel.class)
+@PaintAll(label = "label", type = JLabel.class)
 public class MainFrame extends JFrame {
 
-	@Paint(name = "button")
+	@Paint(label = "button")
 	private JButton button1;
 
-	@Paint(name = "button")
+	@Paint(label = "button")
 	private JButton button2;
 
-	@Paint(name = "myspinner")
+	@Paint(label = "myspinner")
 	private JSpinner spinner1;
 
 	private JLabel label1;
@@ -45,8 +45,7 @@ public class MainFrame extends JFrame {
 	MainFrame() {
 		initComponents();
 
-		Theme theme = new Theme();
-		theme.load("light");
+		Theme theme = new Theme("light");
 		theme.apply(this);
 	}
 }
@@ -63,7 +62,7 @@ button.fg = #FFFFFF
 
 myspinner.bg = #282828
 myspinner.fg = #FFFFFF
-myspinner.border = #000000
+myspinner.border.color = #000000
 myspinner.button.bg = #FF00FF
 myspinner.textfield.bg = #92AB01
 myspinner.textfield.fg = #FFEEFF
