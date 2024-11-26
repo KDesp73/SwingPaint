@@ -88,27 +88,27 @@ public class Theme {
 
 		private static Map<Class<? extends JComponent>, ColorProperty[]> propertiesMap = new HashMap<>();
 		static {
-			propertiesMap.put(JMenu.class, new ColorProperty[]{MENUITEM_BG, MENUITEM_FG});
-			propertiesMap.put(JTree.class, new ColorProperty[]{SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JTextPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JTextField.class, new ColorProperty[]{PLACEHOLDER_COLOR, DISABLED, CARET_COLOR});
-			propertiesMap.put(JTextArea.class, new ColorProperty[]{CARET_COLOR, DISABLED, SELECTED_BG, SELECTED_FG, PLACEHOLDER_COLOR});
-			propertiesMap.put(JTable.class, new ColorProperty[]{HEADER_BG, HEADER_FG, SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JSpinner.class, new ColorProperty[]{BUTTON_BG, TEXTFIELD_BG, TEXTFIELD_FG});
-			propertiesMap.put(JSlider.class, new ColorProperty[]{THUMB, TRACK, TICK});
-			propertiesMap.put(JScrollBar.class, new ColorProperty[]{THUMB, TRACK});
-			propertiesMap.put(JProgressBar.class, new ColorProperty[]{TRACK});
-			propertiesMap.put(JFormattedTextField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JPasswordField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JEditorPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
 			propertiesMap.put(JCheckBox.class, new ColorProperty[]{SELECTED, UNSELECTED});
 			propertiesMap.put(JComboBox.class, new ColorProperty[]{POPUP_BG, POPUP_FG});
+			propertiesMap.put(JEditorPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JFormattedTextField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
 			propertiesMap.put(JInternalFrame.class, new ColorProperty[]{TITLE_BG, TITLE_FG});
 			propertiesMap.put(JList.class, new ColorProperty[]{SELECTED_BG, SELECTED_FG});
-			propertiesMap.put(JToggleButton.class, new ColorProperty[]{SELECTED, UNSELECTED});
+			propertiesMap.put(JMenu.class, new ColorProperty[]{MENUITEM_BG, MENUITEM_FG});
+			propertiesMap.put(JPasswordField.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JProgressBar.class, new ColorProperty[]{TRACK});
+			propertiesMap.put(JScrollBar.class, new ColorProperty[]{THUMB, TRACK});
 			propertiesMap.put(JScrollPane.class, new ColorProperty[]{HORIZONTAL_THUMB, HORIZONTAL_TRACK, VERTICAL_THUMB, VERTICAL_TRACK});
+			propertiesMap.put(JSlider.class, new ColorProperty[]{THUMB, TRACK, TICK});
+			propertiesMap.put(JSpinner.class, new ColorProperty[]{BUTTON_BG, TEXTFIELD_BG, TEXTFIELD_FG});
 			propertiesMap.put(JSplitPane.class, new ColorProperty[]{DIVIDER_COLOR});
 			propertiesMap.put(JTabbedPane.class, new ColorProperty[]{TAB_BG, TAB_FG});
+			propertiesMap.put(JTable.class, new ColorProperty[]{HEADER_BG, HEADER_FG, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JTextArea.class, new ColorProperty[]{CARET_COLOR, DISABLED, SELECTED_BG, SELECTED_FG, PLACEHOLDER_COLOR});
+			propertiesMap.put(JTextField.class, new ColorProperty[]{PLACEHOLDER_COLOR, DISABLED, CARET_COLOR});
+			propertiesMap.put(JTextPane.class, new ColorProperty[]{CARET_COLOR, SELECTED_BG, SELECTED_FG});
+			propertiesMap.put(JToggleButton.class, new ColorProperty[]{SELECTED, UNSELECTED});
+			propertiesMap.put(JTree.class, new ColorProperty[]{SELECTED_BG, SELECTED_FG});
 		}
 
 		public static void printMatchingProperties(Class<? extends JComponent> clazz) {
