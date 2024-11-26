@@ -1,3 +1,4 @@
+TODO: when overriding keep PaintAll's other colors
 DONE: general improvements
 DONE: implement Painters for menu components
 DONE: PaintAll annotation
