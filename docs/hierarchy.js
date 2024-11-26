@@ -2,7 +2,9 @@ var hierarchy =
 [
     [ "io.github.kdesp73.swingpaint.Theme.ColorProperty", "d9/dc3/enumio_1_1github_1_1kdesp73_1_1swingpaint_1_1Theme_1_1ColorProperty.html", null ],
     [ "io.github.kdesp73.swingpaint.painters.GlobalPainter", "d0/deb/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1painters_1_1GlobalPainter.html", null ],
-    [ "io.github.kdesp73.swingpaint.Paint", "d0/dc6/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1Paint.html", null ],
+    [ "io.github.kdesp73.swingpaint.annotations.MultiplePaintAll", "d8/d04/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1MultiplePaintAll.html", null ],
+    [ "io.github.kdesp73.swingpaint.annotations.Paint", "d2/d82/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1Paint.html", null ],
+    [ "io.github.kdesp73.swingpaint.annotations.PaintAll", "d9/d53/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1PaintAll.html", null ],
     [ "io.github.kdesp73.swingpaint.PaintColor", "d9/de8/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1PaintColor.html", null ],
     [ "io.github.kdesp73.swingpaint.painters.Painter", "d5/d9c/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1painters_1_1Painter.html", [
       [ "io.github.kdesp73.swingpaint.painters.ButtonPainter", "d8/d70/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1painters_1_1ButtonPainter.html", null ],

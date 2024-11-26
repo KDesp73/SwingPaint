@@ -4,6 +4,11 @@ var annotated_dup =
       [ "github", null, [
         [ "kdesp73", null, [
           [ "swingpaint", null, [
+            [ "annotations", null, [
+              [ "MultiplePaintAll", "d8/d04/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1MultiplePaintAll.html", null ],
+              [ "Paint", "d2/d82/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1Paint.html", null ],
+              [ "PaintAll", "d9/d53/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1annotations_1_1PaintAll.html", null ]
+            ] ],
             [ "exceptions", null, [
               [ "InvalidColorException", "d3/dfe/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1exceptions_1_1InvalidColorException.html", null ],
               [ "KeyNotFoundException", "d6/d94/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1exceptions_1_1KeyNotFoundException.html", null ]
@@ -39,7 +44,6 @@ var annotated_dup =
               [ "ToolBarPainter", "df/df9/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1painters_1_1ToolBarPainter.html", null ],
               [ "TreePainter", "dd/d46/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1painters_1_1TreePainter.html", null ]
             ] ],
-            [ "Paint", "d0/dc6/interfaceio_1_1github_1_1kdesp73_1_1swingpaint_1_1Paint.html", null ],
             [ "PaintColor", "d9/de8/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1PaintColor.html", "d9/de8/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1PaintColor" ],
             [ "Theme", "de/d6b/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1Theme.html", "de/d6b/classio_1_1github_1_1kdesp73_1_1swingpaint_1_1Theme" ]
           ] ]
