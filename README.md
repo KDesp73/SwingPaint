@@ -27,12 +27,12 @@ implementation 'io.github.kdesp73:SwingPaint:1.1.2'
 
 ```java
 @PaintAll(label = "label", type = JLabel.class)
+@PaintAll(label = "button", type = JButton.class)
 public class MainFrame extends JFrame {
 
-	@Paint(label = "button")
 	private JButton button1;
 
-	@Paint(label = "button")
+	@Paint(label = "specialbutton")
 	private JButton button2;
 
 	@Paint(label = "myspinner")
@@ -59,6 +59,8 @@ File path: `src/main/resources/themes/light.properties`
 ```properties
 button.bg = #282828
 button.fg = #FFFFFF
+
+specialbutton.bg = #FF00FF
 
 myspinner.bg = #282828
 myspinner.fg = #FFFFFF
