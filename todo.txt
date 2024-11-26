@@ -1,2 +1,3 @@
 DONE: general improvements
 DONE: implement Painters for menu components
+DONE: PaintAll annotation
