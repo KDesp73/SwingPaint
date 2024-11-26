@@ -1,2 +1,2 @@
-TODO: implement Painters for menu components
 DONE: general improvements
+DONE: implement Painters for menu components

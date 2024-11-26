@@ -1,5 +1,7 @@
 package io.github.kdesp73.swingpaint;
 
+import io.github.kdesp73.swingpaint.annotations.Paint;
+import io.github.kdesp73.swingpaint.annotations.PaintAll;
 import io.github.kdesp73.swingpaint.painters.GlobalPainter;
 
 import javax.swing.*;
@@ -201,21 +203,47 @@ public class Theme {
 	}
 
 	public void apply(JFrame target) {
-		for (Field field : target.getClass().getDeclaredFields()) {
-			if (field.isAnnotationPresent(Paint.class)) {
-				Paint paintAnnotation = field.getAnnotation(Paint.class);
-				String componentName = paintAnnotation.name();
+		if (target == null) {
+			throw new IllegalArgumentException("Target JFrame cannot be null.");
+		}
 
-				field.setAccessible(true);
-				try {
-					Object component = field.get(target);
-					if(!(component instanceof Component)) continue;
+		Class<?> targetClass = target.getClass();
+		Field[] fields = targetClass.getDeclaredFields();
+		PaintAll[] paintAllAnnotations = targetClass.getAnnotationsByType(PaintAll.class);
 
-					GlobalPainter.paint(this, (Component) component, componentName);
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
+		// Handle PaintAll annotations
+		for (PaintAll a : paintAllAnnotations) {
+			for (Field field : fields) {
+				processField(target, field, a.type(), a.name());
 			}
+		}
+
+		// Handle Paint annotations
+		for (Field field : fields) {
+			if (field.isAnnotationPresent(io.github.kdesp73.swingpaint.annotations.Paint.class)) {
+				io.github.kdesp73.swingpaint.annotations.Paint paintAnnotation =
+					field.getAnnotation(io.github.kdesp73.swingpaint.annotations.Paint.class);
+				processField(target, field, null, paintAnnotation.name());
+			}
+		}
+	}
+
+	private void processField(JFrame target, Field field, Class<?> expectedType, String componentName) {
+		field.setAccessible(true);
+		try {
+			Object component = field.get(target);
+
+			if (!(component instanceof Component)) {
+				return;
+			}
+
+			if (expectedType != null && !expectedType.isAssignableFrom(component.getClass())) {
+				return;
+			}
+
+			GlobalPainter.paint(this, (Component) component, componentName);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
 		}
 	}
 }

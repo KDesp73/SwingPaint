@@ -1,4 +1,4 @@
-package io.github.kdesp73.swingpaint;
+package io.github.kdesp73.swingpaint.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
