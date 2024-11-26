@@ -1,6 +1,5 @@
 package io.github.kdesp73.swingpaint;
 
-import io.github.kdesp73.swingpaint.annotations.Paint;
 import io.github.kdesp73.swingpaint.annotations.PaintAll;
 import io.github.kdesp73.swingpaint.painters.GlobalPainter;
 
@@ -214,7 +213,7 @@ public class Theme {
 		// Handle PaintAll annotations
 		for (PaintAll a : paintAllAnnotations) {
 			for (Field field : fields) {
-				processField(target, field, a.type(), a.name());
+				processField(target, field, a.type(), a.label());
 			}
 		}
 
@@ -223,7 +222,7 @@ public class Theme {
 			if (field.isAnnotationPresent(io.github.kdesp73.swingpaint.annotations.Paint.class)) {
 				io.github.kdesp73.swingpaint.annotations.Paint paintAnnotation =
 					field.getAnnotation(io.github.kdesp73.swingpaint.annotations.Paint.class);
-				processField(target, field, null, paintAnnotation.name());
+				processField(target, field, null, paintAnnotation.label());
 			}
 		}
 	}

@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(value = MultiplePaintAll.class)
 public @interface PaintAll {
-	String name();
+	String label();
 	Class<? extends JComponent> type();
 }
 
