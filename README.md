@@ -1,5 +1,7 @@
 # SwingPaint
 
+[![MvnRepository](https://badges.mvnrepository.com/badge/io.github.kdesp73/SwingPaint/badge.svg?label=MvnRepository)](https://mvnrepository.com/artifact/io.github.kdesp73/SwingPaint)
+
 A user-friendly library that simplifies coloring and theming,
 making it easy to integrate into existing desktop applications.
 
